@@ -13,6 +13,8 @@ Your goal is to:
 
 Replace this paragraph with your own summary of what your version does.
 
+In this project I will build a music recommender system that uses content-based filtering to match songs to user preferences. The system will represents 20 diverse songs across a number of genres, as a dataset with meaningful attributes. It will have a scoring rule that quantifies song-to-user compatibility by combining exact matches (genre, mood) with proximity scoring on numeric features (energy, tempo).The final result will mirror real-world recommender systems like Spotify and YouTube.
+
 ---
 
 ## How The System Works
@@ -45,6 +47,17 @@ In this model:
 - Scoring: each song gets a combined score from exact text matches (genre/mood), and closeness of numeric features to profile targets (energy, tempo, valence)
 - Selection: songs are sorted by score highest-first and top-N recommendations are returned
 
+Algorithm Recipe:
+- +2.0 points for matching the user's favorite genre exactly
+- +1.0 point for matching the user's favorite mood exactly  
+- +1.0 point for energy similarity (closer to user's target energy = higher score)
+- +0.8 points for tempo closeness (normalized difference from user's target tempo)
+- +0.6 points for valence similarity (closer to user's target valence = higher score)
+- +0.4 points for danceability and acousticness similarity each
+
+This balanced weighting gives more importance to categorical matches like genre and mood, while still rewarding numeric closeness. This ensures songs that match the users core preferences score highest while at the same time allowing variety.
+
+Potential bias: This system might over prioritize genre matches, and could potentially ignore great songs in other genres that closely match the users preferences.
 ---
 
 ## Getting Started
