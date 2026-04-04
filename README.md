@@ -29,6 +29,22 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+In real-world services like Spotify and YouTube, recommendations are built from two signals: 
+
+- what users do like listening, liking, skipping, and adding to playlist, and
+- what the tracks are like genre, mood, tempo, energy, valence, danceability, and acousticness.
+
+My version focuses on a simple content-based simulation that prioritizes matching a user profile to song attributes, and translating preferences into a numeric score.
+
+
+In this model:
+
+- Song features: genre, mood, energy, tempo_bpm, valence, danceability, and acousticness
+- UserProfile preferences: favorite genre, desired mood, preferred energy level, target tempo range, and valence goal
+
+- Scoring: each song gets a combined score from exact text matches (genre/mood), and closeness of numeric features to profile targets (energy, tempo, valence)
+- Selection: songs are sorted by score highest-first and top-N recommendations are returned
+
 ---
 
 ## Getting Started
