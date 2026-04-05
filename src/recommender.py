@@ -47,12 +47,12 @@ class Recommender:
             score = 0.0
             
             if song.genre == user.favorite_genre:
-                score += 4.0
+                score += 2.0
             if song.mood == user.favorite_mood:
                 score += 2.5
             
             energy_diff = abs(song.energy - user.target_energy)
-            score += 1.8 * (1 - energy_diff)
+            score += 3.6 * (1 - energy_diff)
             
             tempo_diff = abs(song.tempo_bpm - user.target_tempo_bpm)
             score += 1.2 * max(0, 1 - tempo_diff / 70)
@@ -120,19 +120,19 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     score = 0.0
     reasons = []
     
-    # Genre match: +2.0 points
+    # Genre match: +1.0 points
     if song['genre'] == user_prefs['favorite_genre']:
-        score += 2.0
-        reasons.append("genre match (+2.0)")
+        score += 1.0
+        reasons.append("genre match (+1.0)")
     
     # Mood match: +1.0 point
     if song['mood'] == user_prefs['favorite_mood']:
         score += 1.0
         reasons.append("mood match (+1.0)")
     
-    # Energy similarity: 1.0 * (1 - abs(diff))
+    # Energy similarity: 2.0 * (1 - abs(diff))
     energy_diff = abs(song['energy'] - user_prefs['target_energy'])
-    energy_score = 1.0 * (1 - energy_diff)
+    energy_score = 2.0 * (1 - energy_diff)
     score += energy_score
     reasons.append(f"energy similarity (+{energy_score:.2f})")
     

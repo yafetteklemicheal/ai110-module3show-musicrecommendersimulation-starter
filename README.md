@@ -31,13 +31,12 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
-In real-world services like Spotify and YouTube, recommendations are built from two signals: 
+In real-world services like Spotify and YouTube, recommendations are built from two signals:
 
 - what users do like listening, liking, skipping, and adding to playlist, and
 - what the tracks are like genre, mood, tempo, energy, valence, danceability, and acousticness.
 
 My version focuses on a simple content-based simulation that prioritizes matching a user profile to song attributes, and translating preferences into a numeric score.
-
 
 In this model:
 
@@ -48,8 +47,9 @@ In this model:
 - Selection: songs are sorted by score highest-first and top-N recommendations are returned
 
 Algorithm Recipe:
+
 - +2.0 points for matching the user's favorite genre exactly
-- +1.0 point for matching the user's favorite mood exactly  
+- +1.0 point for matching the user's favorite mood exactly
 - +1.0 point for energy similarity (closer to user's target energy = higher score)
 - +0.8 points for tempo closeness (normalized difference from user's target tempo)
 - +0.6 points for valence similarity (closer to user's target valence = higher score)
@@ -59,7 +59,16 @@ This balanced weighting gives more importance to categorical matches like genre 
 
 Potential bias: This system might over prioritize genre matches, and could potentially ignore great songs in other genres that closely match the users preferences.
 
-![Screenshot of your terminal output showing the recommendations](image.png)
+![Screenshot of your terminal output showing the recommendations](<Screenshot of recommendations.png>)
+
+Screenshots of the top 5 results for each profile:
+
+![Terminal output for High-Energy Pop profile](<High-Energy Pop.png>)
+![Terminal output for Chill Lofi profile](<Chill Lofi.png>)
+![Terminal output for Deep Intense Rock profile](<Deep Intense Rock.png>)
+![Terminal output for Edge Case: High Energy Sad profile](<High Energy Sad.png>)
+![Terminal output for Edge Case: Calm Metal profile](<Calm Metal.png>)
+
 ---
 
 ## Getting Started
@@ -72,6 +81,8 @@ Potential bias: This system might over prioritize genre matches, and could poten
    python -m venv .venv
    source .venv/bin/activate      # Mac or Linux
    .venv\Scripts\activate         # Windows
+
+   ```
 
 2. Install dependencies
 
@@ -132,12 +143,11 @@ Write 1 to 2 paragraphs here about what you learned:
 - about how recommenders turn data into predictions
 - about where bias or unfairness could show up in systems like this
 
-
 ---
 
 ## 7. `model_card_template.md`
 
-Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}  
+Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}
 
 ```markdown
 # 🎧 Model Card - Music Recommender Simulation
@@ -189,6 +199,7 @@ Describe your dataset.
 Where does your recommender work well
 
 You can think about:
+
 - Situations where the top results "felt right"
 - Particular user profiles it served well
 - Simplicity or transparency benefits
@@ -200,6 +211,7 @@ You can think about:
 Where does your recommender struggle
 
 Some prompts:
+
 - Does it ignore some genres or moods
 - Does it treat all users as if they have the same taste shape
 - Is it biased toward high energy or one genre by default
@@ -212,6 +224,7 @@ Some prompts:
 How did you check your system
 
 Examples:
+
 - You tried multiple user profiles and wrote down whether the results matched your expectations
 - You compared your simulation to what a real app like Spotify or YouTube tends to recommend
 - You wrote tests for your scoring logic
@@ -239,4 +252,4 @@ A few sentences about what you learned:
 - What surprised you about how your system behaved
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
-
+```
