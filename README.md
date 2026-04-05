@@ -58,6 +58,8 @@ Algorithm Recipe:
 This balanced weighting gives more importance to categorical matches like genre and mood, while still rewarding numeric closeness. This ensures songs that match the users core preferences score highest while at the same time allowing variety.
 
 Potential bias: This system might over prioritize genre matches, and could potentially ignore great songs in other genres that closely match the users preferences.
+
+![Screenshot of your terminal output showing the recommendations](image.png)
 ---
 
 ## Getting Started
